@@ -1,4 +1,10 @@
-html,
+import * as React from 'react'
+import { createGlobalStyle } from 'styled-components'
+import reset from 'styled-reset'
+
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+  html,
 body,
 div,
 span,
@@ -115,13 +121,19 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-body {
-  box-sizing: border-box;
+`
+
+const App = () => (
+  <React.Fragment>
+    <GlobalStyle />
+  </React.Fragment>
 }
+
+export default App
