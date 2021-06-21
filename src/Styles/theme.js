@@ -1,4 +1,4 @@
-import { borderBlue } from "./Mixin";
+import { borderBlue } from "./mixin";
 
 const theme = {
   background: "#FFFFFF",
