@@ -22,7 +22,7 @@ function Main() {
 
   return (
     <Container>
-      <BannerSlider />
+      {/* <BannerSlider /> */}
       <CategoryList>
         {categories.map(cate => {
           return (

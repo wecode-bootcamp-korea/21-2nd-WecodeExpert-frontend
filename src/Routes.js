@@ -1,5 +1,5 @@
 import React from 'react';
-// import Nav from "./Components/Nav/Nav";
+import Nav from './Components/Nav/Nav';
 import Main from './Pages/Main/Main';
 import Login from './Pages/Login/Login';
 import Detail from './Pages/Detail/Detail';
@@ -12,7 +12,7 @@ class Routes extends React.Component {
   render() {
     return (
       <Router>
-        {/* <Nav /> */}
+        <Nav />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
