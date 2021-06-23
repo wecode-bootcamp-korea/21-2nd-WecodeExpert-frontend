@@ -1,8 +1,8 @@
-import { borderBlue } from "./mixin";
+import { borderBlue } from './mixin';
 
 const theme = {
-  background: "#FFFFFF",
-  fontColor: "#0000",
+  background: '#FFFFFF',
+  fontColor: '#0000',
   borderBlue,
 };
 
