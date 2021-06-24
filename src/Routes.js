@@ -1,5 +1,5 @@
 import React from 'react';
-// import Nav from "./Components/Nav/Nav";
+// import Nav from './Components/Nav/Nav';
 import Main from './Pages/Main/Main';
 import Login from './Pages/Login/Login';
 import Detail from './Pages/Detail/Detail';
