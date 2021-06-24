@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -6,6 +7,9 @@ import SocialLogin from '../NavModal/SocialLogin/SocialLogin';
 import SocialLogout from '../NavModal/SocialLogout/SocialLogout';
 import Header from '../../Pages/Expert/Header/Header';
 import styled from 'styled-components';
+=======
+import React from 'react';
+>>>>>>> 0078ae6... Add: category, 목록 페이지 레이아웃
 
 const ALLOWED_PATH = [
   '/expert/join',
@@ -113,6 +117,7 @@ function Nav(props) {
   );
 }
 export default Nav;
+<<<<<<< HEAD
 
 const Container = styled.div`
   position: relative;
@@ -191,3 +196,5 @@ const ItemLink = styled.a`
 const Logo = styled.img`
   width: 110px;
 `;
+=======
+>>>>>>> 0078ae6... Add: category, 목록 페이지 레이아웃
