@@ -14,7 +14,11 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    font-color: #000;
+    color: #000;
+  }
+
+  strong {
+    font-weight: bold;
   }
 `;
 
