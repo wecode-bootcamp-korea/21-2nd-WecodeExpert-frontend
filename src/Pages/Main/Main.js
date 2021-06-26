@@ -22,7 +22,7 @@ function Main() {
 
   return (
     <Container>
-      <BannerSlider />
+      {/* <BannerSlider /> */}
       <CategoryList>
         {categories.map(cate => {
           return (
@@ -116,7 +116,7 @@ function Main() {
               </strong>
             </InformationItem>
           </Link>
-          <Link to="#">
+          <Link to="/expert/join/introduce">
             <InformationItem imageUrl="https://ssl.pstatic.net/static/kin/section/expert/m/startCompany.svg">
               <strong>
                 엑스퍼트
