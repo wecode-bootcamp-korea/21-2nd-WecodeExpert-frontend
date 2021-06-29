@@ -329,7 +329,7 @@ const InputSelect = styled.select`
   background-color: #fff;
   border: 1px solid rgba(126, 150, 255, 0.7);
   border-radius: 10px;
-  color: #cfcfcf;
+  color: #757575;
   font-size: 15px;
   text-align: left;
   line-height: 20px;

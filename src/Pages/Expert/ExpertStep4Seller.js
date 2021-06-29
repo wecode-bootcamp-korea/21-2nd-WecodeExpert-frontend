@@ -1,14 +1,43 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { uploadFile } from 'react-s3';
 import Header from './Header/Header';
 import StepNavigation from './StepNavigation/StepNavigation';
 
+const DEFAILT_IMAGE_URL =
+  'https://user-images.githubusercontent.com/3303885/123738019-fe8e2580-d8de-11eb-98da-9d8621f88d9e.png';
+
 function ExpertStep4Seller({ location }) {
   const history = useHistory();
+  const [filePath, setFilePath] = useState(DEFAILT_IMAGE_URL);
 
   const handleNextStep = () => {
     //TODO POST API
+  };
+
+  const S3_BUCKET = 'test-expert';
+  const REGION = 'us-east-2';
+  const ACCESS_KEY = 'AKIAYEAS6CNDMOGR7TTH';
+  const SECRET_ACCESS_KEY = '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';
+
+  const config = {
+    bucketName: S3_BUCKET,
+    region: REGION,
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY,
+  };
+
+  const [selectedFile, setSelectedFile] = useState(DEFAILT_IMAGE_URL);
+
+  const handleFileInput = e => {
+    setSelectedFile(URL.createObjectYRL(e.target.files[0]));
+  };
+
+  const handleUpload = async file => {
+    uploadFile(file, config)
+      .then(data => console.log(data))
+      .catch(err => console.error(err));
   };
 
   return (
@@ -43,9 +72,13 @@ function ExpertStep4Seller({ location }) {
 
                 <FormItem>
                   <FormItemInner>
-                    <FormItemLabel>프로필 사진</FormItemLabel>
+                    <FormItemLabel>프로필 사진z</FormItemLabel>
                     <FormItemInput>
-                      <InputText type="text"></InputText>
+                      <ProfileThumb src={selectedFile} size="100px" />
+                      <input type="file" onChange={handleFileInput} />
+                      <button onClick={() => handleUpload(selectedFile)}>
+                        Upload to S3
+                      </button>
                     </FormItemInput>
                   </FormItemInner>
                 </FormItem>
@@ -99,6 +132,21 @@ function ExpertStep4Seller({ location }) {
     </Container>
   );
 }
+
+const ProfileThumb = styled.div.attrs(props => ({
+  image: props.src,
+  size: props.size || '30px',
+}))`
+  position: relative;
+  margin-right: 6px;
+  width: ${props => props.size};
+  height: ${props => props.size};
+  background-image: url(${props => props.image});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+`;
 
 const Container = styled.div`
   min-width: 1160px;
