@@ -6,6 +6,7 @@ import Login from './Pages/Login/Login';
 import Detail from './Pages/Detail/Detail';
 import Category from './Pages/Category/Category';
 import Join from './Pages/Join/Join';
+import Expert from './Pages/Expert/Expert';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -20,6 +21,8 @@ class Routes extends React.Component {
           <Route exact path="/join" component={Join} />
           <Route exact path="/category" component={Category} />
           <Route exact path="/detail/:id" component={Detail} />
+          <Route exact path="/expert/join" component={Expert} />
+          <Route exact path="/expert/join/:page" component={Expert} />
         </Switch>
         <Footer />
       </Router>

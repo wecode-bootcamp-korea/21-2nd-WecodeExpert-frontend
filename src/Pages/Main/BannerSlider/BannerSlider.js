@@ -27,14 +27,14 @@ function BannerSlider() {
 
   const slider = useRef();
 
-  // auto play time (4초)을 프로그래스바로 보여주기 위한 Interval
+  // auto play time (3초)을 프로그래스바로 보여주기 위한 Interval
   useInterval(
     () => {
       if (progressWidth >= 100) {
         setProgressWidth(0);
         next();
       } else {
-        setProgressWidth(progressWidth + 1 / (0.1 + 4));
+        setProgressWidth(progressWidth + 1 / (0.1 + 3));
       }
     },
     isRunning ? 10 : null

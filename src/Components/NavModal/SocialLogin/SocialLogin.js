@@ -7,7 +7,7 @@ function SocialLogin(props) {
   const kakaoLoginHandle = () => {
     Kakao.Auth.login({
       success: function (authObj) {
-        fetch('http://10.58.3.107:8000/users/social-login', {
+        fetch('http://3.133.12.85:8000/users/social-login', {
           method: 'POST',
           //헤더로 토큰 송출
           headers: {
