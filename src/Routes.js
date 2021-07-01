@@ -23,6 +23,7 @@ class Routes extends React.Component {
           <Route exact path="/detail/:id" component={Detail} />
           <Route exact path="/expert/join" component={Expert} />
           <Route exact path="/expert/join/:page" component={Expert} />
+          <Route exact path="/category/:id" component={Category} />
         </Switch>
         <Footer />
       </Router>
