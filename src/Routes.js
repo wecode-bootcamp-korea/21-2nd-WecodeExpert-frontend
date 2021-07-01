@@ -1,5 +1,6 @@
 import React from 'react';
 import Nav from './Components/Nav/Nav';
+import Footer from './Components/Footer/Footer';
 import Main from './Pages/Main/Main';
 import Login from './Pages/Login/Login';
 import Detail from './Pages/Detail/Detail';
@@ -18,8 +19,9 @@ class Routes extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/join" component={Join} />
           <Route exact path="/category" component={Category} />
-          <Route exact path="/detail" component={Detail} />
+          <Route exact path="/detail/:id" component={Detail} />
         </Switch>
+        <Footer />
       </Router>
     );
   }
