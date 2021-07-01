@@ -1,15 +1,16 @@
 import { React, useState, useEffect } from 'react';
 import { getHiddenEmail } from '../../../Utils/helpers';
 import styled from 'styled-components';
+import { BASE_URL } from '../../../config';
 
 function ProductReview({ product }) {
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetch('/data/reviewData.json')
+    fetch(`${BASE_URL}products/${product.product_id}/review`)
       .then(res => res.json())
-      .then(data => setReviews(data.results));
+      .then(data => setReviews(data.result));
   }, []);
 
   const paingReviews = reviews.slice(0, page * LIMIT);
@@ -31,7 +32,7 @@ function ProductReview({ product }) {
             <ReviewInfoTitle>상품 평균 별점</ReviewInfoTitle>
             <ReviewInfoDesc>
               {reviews.reduce((cur, item) => cur + item.star_rating, 0) /
-                reviews.length}
+                reviews.length || 0}
             </ReviewInfoDesc>
           </ReviewInfoItem>
         </ReviewInfoArea>
@@ -54,7 +55,7 @@ function ProductReview({ product }) {
                   })}
                 </ReviewItemPointBar>
                 <ReviewItemPointNumber>
-                  {review.review_id}
+                  {review.star_rating}
                 </ReviewItemPointNumber>
               </ReviewItemPoint>
               <ReviewItemText>{review.content}</ReviewItemText>

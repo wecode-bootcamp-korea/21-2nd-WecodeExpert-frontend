@@ -3,26 +3,29 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import BannerSlider from './BannerSlider/BannerSlider';
 import SwipeToSlide from './SwipeToSlide/SwipeToSlide';
+import { BASE_URL } from '../../config';
 
 function Main() {
   const [bestseller, setBestseller] = useState([]);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     // 카테고리 Mock Data
     fetch('/data/categoryData.json')
       .then(res => res.json())
       .then(data => setCategories(data.results));
 
     // 구매율이 높은 인기상품
-    fetch('/data/bestItemData.json')
+    fetch(`${BASE_URL}products?sort=sell_count&limit=10`)
       .then(res => res.json())
-      .then(data => setBestseller(data.results));
+      .then(data => setBestseller(data.result));
   }, []);
 
   return (
     <Container>
-      {/* <BannerSlider /> */}
+      <BannerSlider />
       <CategoryList>
         {categories.map(cate => {
           return (
@@ -49,21 +52,18 @@ function Main() {
                     <CardItem>
                       <Link to={`/detail/${item.product_id}`}>
                         <CardItemTitle>
-                          <strong>{item.product_title}</strong>
+                          <strong>{item.title}</strong>
                         </CardItemTitle>
                         <CardItemContet>
-                          <em>{item.product_content}</em>
+                          <em>{item.content}</em>
                         </CardItemContet>
                       </Link>
                       <Link to={`/detail/${item.product_id}`}>
                         <ProfileBox>
-                          <ProfileThumb
-                            src={item.mentor_profile_img}
-                            size="30px"
-                          />
+                          <ProfileThumb src={item.expert_image} size="30px" />
                           <ProfileInfoArea>
                             <ProfileInfoSpan>
-                              {item.mentor_name} {item.mentor_type}
+                              {item.expert_name} {item.expert_type}
                             </ProfileInfoSpan>
                             <ProfileInfoSpan before={true}>
                               {item.category_name}
@@ -89,7 +89,10 @@ function Main() {
           </InformationDesc>
         </InformationSection>
         <InformationList>
-          <Link to="#">
+          <a
+            href="https://expert.naver.com/expert/introduction"
+            target="_blank"
+          >
             <InformationItem imageUrl="https://ssl.pstatic.net/static/kin/section/expert/m/startExpert.svg">
               <strong>
                 엑스퍼트란
@@ -97,7 +100,7 @@ function Main() {
                 무엇인가요?
               </strong>
             </InformationItem>
-          </Link>
+          </a>
           <Link to="#">
             <InformationItem imageUrl="https://ssl.pstatic.net/static/kin/section/expert/m/startExpert.svg">
               <strong>
@@ -116,7 +119,7 @@ function Main() {
               </strong>
             </InformationItem>
           </Link>
-          <Link to="/expert/join/introduce">
+          <Link to="/expert/join">
             <InformationItem imageUrl="https://ssl.pstatic.net/static/kin/section/expert/m/startCompany.svg">
               <strong>
                 엑스퍼트
