@@ -1,16 +1,32 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import NavCategory from '../NavModal/NavCategory/NavCategory';
 import SocialLogin from '../NavModal/SocialLogin/SocialLogin';
 import SocialLogout from '../NavModal/SocialLogout/SocialLogout';
+import Header from '../../Pages/Expert/Header/Header';
 import styled from 'styled-components';
+
+const ALLOWED_PATH = [
+  '/expert/join',
+  '/expert/join/type',
+  '/expert/join/agree',
+  '/expert/join/basic',
+  '/expert/join/seller',
+];
 
 function Nav(props) {
   const [categoryValid, setCategoryValid] = useState(false);
   const [accountModalValid, setAccountModalValid] = useState(false);
   const [userImg, setUserImg] = useState('');
   const [profileValid, setProfileValid] = useState(false);
+  const [showNav, setShowNav] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    const isAllowed = ALLOWED_PATH.includes(location.pathname);
+    setShowNav(isAllowed);
+  }, [location.pathname]);
 
   const categoryOn = () => {
     setCategoryValid(true);
@@ -37,51 +53,61 @@ function Nav(props) {
   return (
     <Container>
       <Wrapper>
-        <NavBox>
-          <LogoWrap>
-            <Link to="/">
-              <Logo
-                src="https://user-images.githubusercontent.com/3303885/124051964-72a00900-da58-11eb-9065-6fe9df3ed4f9.png"
-                alt="logo"
-              />
-            </Link>
-          </LogoWrap>
-
-          <SearchWrap>
-            <FontIcon>
-              <i className="fas fa-search" />
-            </FontIcon>
-
-            <Input type="text" placeholder="필요한 상담 찾기" />
-          </SearchWrap>
-
-          <UserItems>
-            <ItemLink>
-              <i className="far fa-comment-dots" />
-            </ItemLink>
-            <ItemLink onMouseEnter={categoryOn} onMouseLeave={categoryOff}>
-              <i className="fas fa-list" />
-              {categoryValid && <NavCategory isCheck={categoryValid} />}
-            </ItemLink>
-            <ItemLink onMouseEnter={loginModalon} onMouseLeave={loginModalOff}>
-              {localStorage.getItem('Wexpert_token') && (
-                <UserImg src={userImg} alt="profile" />
-              )}
-              {!localStorage.getItem('Wexpert_token') && (
-                <i className="far fa-user-circle" />
-              )}
-              {!localStorage.getItem('Wexpert_token') && accountModalValid && (
-                <SocialLogin
-                  setUserImg={setUserImg}
-                  setProfileValid={setProfileValid}
+        {showNav ? (
+          <>
+            <Header />
+          </>
+        ) : (
+          <NavBox>
+            <LogoWrap>
+              <Link to="/">
+                <Logo
+                  src="https://user-images.githubusercontent.com/3303885/124051964-72a00900-da58-11eb-9065-6fe9df3ed4f9.png"
+                  alt="logo"
                 />
-              )}
-              {localStorage.getItem('Wexpert_token') && accountModalValid && (
-                <SocialLogout setProfileValid={setProfileValid} />
-              )}
-            </ItemLink>
-          </UserItems>
-        </NavBox>
+              </Link>
+            </LogoWrap>
+
+            <SearchWrap>
+              <FontIcon>
+                <i className="fas fa-search" />
+              </FontIcon>
+
+              <Input type="text" placeholder="필요한 상담 찾기" />
+            </SearchWrap>
+
+            <UserItems>
+              <ItemLink>
+                <i className="far fa-comment-dots" />
+              </ItemLink>
+              <ItemLink onMouseEnter={categoryOn} onMouseLeave={categoryOff}>
+                <i className="fas fa-list" />
+                {categoryValid && <NavCategory isCheck={categoryValid} />}
+              </ItemLink>
+              <ItemLink
+                onMouseEnter={loginModalon}
+                onMouseLeave={loginModalOff}
+              >
+                {localStorage.getItem('Wexpert_token') && (
+                  <UserImg src={userImg} alt="profile" />
+                )}
+                {!localStorage.getItem('Wexpert_token') && (
+                  <i className="far fa-user-circle" />
+                )}
+                {!localStorage.getItem('Wexpert_token') &&
+                  accountModalValid && (
+                    <SocialLogin
+                      setUserImg={setUserImg}
+                      setProfileValid={setProfileValid}
+                    />
+                  )}
+                {localStorage.getItem('Wexpert_token') && accountModalValid && (
+                  <SocialLogout setProfileValid={setProfileValid} />
+                )}
+              </ItemLink>
+            </UserItems>
+          </NavBox>
+        )}
       </Wrapper>
     </Container>
   );
