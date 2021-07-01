@@ -17,8 +17,8 @@ function SocialLogin(props) {
           .then(res => res.json())
           .then(res => {
             //유저 프로필 수신
-            props.setUserImg(res.profile);
             localStorage.setItem('Wexpert_token', res.access_token);
+            localStorage.setItem('User_profile', res.profile);
             if (localStorage.setItem) {
               alert('환영합니다!');
               props.setProfileValid(true);

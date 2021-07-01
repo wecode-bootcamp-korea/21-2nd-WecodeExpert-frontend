@@ -18,7 +18,6 @@ const ALLOWED_PATH = [
 function Nav(props) {
   const [categoryValid, setCategoryValid] = useState(false);
   const [accountModalValid, setAccountModalValid] = useState(false);
-  const [userImg, setUserImg] = useState('');
   const [profileValid, setProfileValid] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const location = useLocation();
@@ -43,10 +42,6 @@ function Nav(props) {
   const loginModalOff = () => {
     setAccountModalValid(false);
   };
-
-  useEffect(() => {
-    setAccountModalValid(false);
-  }, [userImg]);
 
   useEffect(() => {}, [profileValid]);
 
@@ -89,17 +84,17 @@ function Nav(props) {
                 onMouseLeave={loginModalOff}
               >
                 {localStorage.getItem('Wexpert_token') && (
-                  <UserImg src={userImg} alt="profile" />
+                  <UserImg
+                    src={localStorage.getItem('User_profile')}
+                    alt="profile"
+                  />
                 )}
                 {!localStorage.getItem('Wexpert_token') && (
                   <i className="far fa-user-circle" />
                 )}
                 {!localStorage.getItem('Wexpert_token') &&
                   accountModalValid && (
-                    <SocialLogin
-                      setUserImg={setUserImg}
-                      setProfileValid={setProfileValid}
-                    />
+                    <SocialLogin setProfileValid={setProfileValid} />
                   )}
                 {localStorage.getItem('Wexpert_token') && accountModalValid && (
                   <SocialLogout setProfileValid={setProfileValid} />
