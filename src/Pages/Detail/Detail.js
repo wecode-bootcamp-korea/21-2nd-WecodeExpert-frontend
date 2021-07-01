@@ -4,15 +4,16 @@ import styled from 'styled-components';
 import FixableTabMenu from '../../Components/FixableTabMenu/FixableTabMenu';
 import ProductDescription from './ProductDescription/ProductDescription';
 import ProductReview from './ProductReview/ProductReview';
+import { GET_PRODUCT_API } from '../../config';
 
-function Detail() {
+function Detail({ location, match }) {
   const [product, setProduct] = useState({});
   const [tabIndex, setTabIndex] = useState(0);
   const tabScroll = useRef();
 
   useEffect(() => {
     // 상품 Mock Data
-    fetch('/data/productData.json')
+    fetch(`${GET_PRODUCT_API}/${match.params.id}`)
       .then(res => res.json())
       .then(data => setProduct(data.result));
   }, []);
@@ -51,6 +52,7 @@ function Detail() {
               tabList={['상세정보', '후기']}
               tabIndex={tabIndex}
               setTabIndex={setTabIndex}
+              top={58}
             />
             <div ref={tabScroll}></div>
             {tabIndex === 0 && <ProductDescription product={product} />}

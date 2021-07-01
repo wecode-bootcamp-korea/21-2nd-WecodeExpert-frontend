@@ -137,15 +137,15 @@ const BANNERS = [
   {
     no: 1,
     image:
-      'https://user-images.githubusercontent.com/3303885/123605928-54a78e00-d837-11eb-8423-d772d3a093a2.jpeg',
+      'http://user-images.githubusercontent.com/3303885/123605928-54a78e00-d837-11eb-8423-d772d3a093a2.jpeg',
     title: '엑스퍼트 X KOTRA\n실시간 전문가\n상담 사업 신청 안내',
     color: '#064689',
-    link: 'https://m.expert.naver.com/mobile/events/21024454906',
+    link: '',
   },
   {
     no: 2,
     image:
-      'https://user-images.githubusercontent.com/3303885/123605922-53766100-d837-11eb-8507-a424802283dc.jpeg',
+      'http://user-images.githubusercontent.com/3303885/123605922-53766100-d837-11eb-8507-a424802283dc.jpeg',
     title: '영어공부를\n다시 시작한다면\n1:1 맞춤클래스',
     color: '#035ac6',
     link: '',
@@ -153,7 +153,7 @@ const BANNERS = [
   {
     no: 3,
     image:
-      'https://user-images.githubusercontent.com/3303885/123605924-540ef780-d837-11eb-929d-144f03690c32.jpeg',
+      'http://user-images.githubusercontent.com/3303885/123605924-540ef780-d837-11eb-929d-144f03690c32.jpeg',
     title: '무료한 일상\n솜씨당과 함께하는\n즐거운 취미 생활',
     color: '#cc6a71',
     link: '',
@@ -161,10 +161,10 @@ const BANNERS = [
   {
     no: 4,
     image:
-      'https://user-images.githubusercontent.com/3303885/123605914-507b7080-d837-11eb-93fa-fa4cc2713473.jpeg',
+      'http://user-images.githubusercontent.com/3303885/123605914-507b7080-d837-11eb-93fa-fa4cc2713473.jpeg',
     title: '요즘 핫한\n클래스만 모았어!\n90%할인 중',
     color: '#4c7d19',
-    link: 'https://campaign.naver.com/eXpertTOPclass/?utm_source=naver&utm_medium=banner&utm_campaign=eXpertTOPclass_general&utm_content=experthome_general-hot_210415',
+    link: '',
   },
 ];
 

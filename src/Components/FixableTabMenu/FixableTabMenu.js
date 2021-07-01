@@ -1,7 +1,7 @@
 import { React, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-function FixableTabMenu({ tabList, tabIndex, setTabIndex }) {
+function FixableTabMenu({ tabList, tabIndex, setTabIndex, top }) {
   const [isFix, setIsFix] = useState(false);
   const tabMenu = useRef();
 
@@ -20,7 +20,7 @@ function FixableTabMenu({ tabList, tabIndex, setTabIndex }) {
   return (
     <>
       <TabAreaHidden ref={tabMenu} />
-      <TabArea isFix={isFix}>
+      <TabArea isFix={isFix} top={top}>
         <TabList>
           {tabList?.map((item, index) => (
             <TabLink onClick={() => setTabIndex(index)} key={index}>

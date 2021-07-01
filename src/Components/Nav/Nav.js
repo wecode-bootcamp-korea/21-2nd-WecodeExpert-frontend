@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import NavCategory from '../NavModal/NavCategory/NavCategory';
 import SocialLogin from '../NavModal/SocialLogin/SocialLogin';
 import SocialLogout from '../NavModal/SocialLogout/SocialLogout';
@@ -35,50 +36,73 @@ function Nav(props) {
 
   return (
     <Container>
-      <LogoWrap>
-        <Logo src="./images/logo.jpg" alt="logo" />
-      </LogoWrap>
+      <Wrapper>
+        <NavBox>
+          <LogoWrap>
+            <Link to="/">
+              <Logo
+                src="https://user-images.githubusercontent.com/3303885/124051964-72a00900-da58-11eb-9065-6fe9df3ed4f9.png"
+                alt="logo"
+              />
+            </Link>
+          </LogoWrap>
 
-      <SearchWrap>
-        <FontIcon>
-          <i className="fas fa-search" />
-        </FontIcon>
+          <SearchWrap>
+            <FontIcon>
+              <i className="fas fa-search" />
+            </FontIcon>
 
-        <Input type="text" placeholder="필요한 상담 찾기" />
-      </SearchWrap>
+            <Input type="text" placeholder="필요한 상담 찾기" />
+          </SearchWrap>
 
-      <UserItems>
-        <ItemLink>
-          <i className="far fa-comment-dots" />
-        </ItemLink>
-        <ItemLink onMouseEnter={categoryOn} onMouseLeave={categoryOff}>
-          <i className="fas fa-list" />
-          {categoryValid && <NavCategory isCheck={categoryValid} />}
-        </ItemLink>
-        <ItemLink onMouseEnter={loginModalon} onMouseLeave={loginModalOff}>
-          {localStorage.getItem('Wexpert_token') && (
-            <UserImg src={userImg} alt="profile" />
-          )}
-          {!localStorage.getItem('Wexpert_token') && (
-            <i className="far fa-user-circle" />
-          )}
-          {!localStorage.getItem('Wexpert_token') && accountModalValid && (
-            <SocialLogin
-              setUserImg={setUserImg}
-              setProfileValid={setProfileValid}
-            />
-          )}
-          {localStorage.getItem('Wexpert_token') && accountModalValid && (
-            <SocialLogout setProfileValid={setProfileValid} />
-          )}
-        </ItemLink>
-      </UserItems>
+          <UserItems>
+            <ItemLink>
+              <i className="far fa-comment-dots" />
+            </ItemLink>
+            <ItemLink onMouseEnter={categoryOn} onMouseLeave={categoryOff}>
+              <i className="fas fa-list" />
+              {categoryValid && <NavCategory isCheck={categoryValid} />}
+            </ItemLink>
+            <ItemLink onMouseEnter={loginModalon} onMouseLeave={loginModalOff}>
+              {localStorage.getItem('Wexpert_token') && (
+                <UserImg src={userImg} alt="profile" />
+              )}
+              {!localStorage.getItem('Wexpert_token') && (
+                <i className="far fa-user-circle" />
+              )}
+              {!localStorage.getItem('Wexpert_token') && accountModalValid && (
+                <SocialLogin
+                  setUserImg={setUserImg}
+                  setProfileValid={setProfileValid}
+                />
+              )}
+              {localStorage.getItem('Wexpert_token') && accountModalValid && (
+                <SocialLogout setProfileValid={setProfileValid} />
+              )}
+            </ItemLink>
+          </UserItems>
+        </NavBox>
+      </Wrapper>
     </Container>
   );
 }
 export default Nav;
 
 const Container = styled.div`
+  position: relative;
+  padding-bottom: 68px;
+`;
+
+const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  background-color: #fff;
+`;
+
+const NavBox = styled.div`
   display: flex;
   max-width: 1280px;
   margin: 0 auto;
