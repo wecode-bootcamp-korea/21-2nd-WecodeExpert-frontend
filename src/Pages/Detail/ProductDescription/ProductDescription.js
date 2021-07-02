@@ -2,21 +2,17 @@ import { React, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 function ProductDescription({ product }) {
-  const [isShowMoreContent, setIsShowMoreContent] = useState(false);
+  const [isShowMoreContent, setIsShowMoreContent] = useState(true);
   const contentViewer = useRef();
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
     // TODO 상세설명란 길이가 작을 경우 상품상세 더보기 버튼이 안보여야 하는데..
-    if (
-      contentViewer &&
-      contentViewer.current &&
-      contentViewer.current.clientHeight > 100
-    ) {
-      setIsShowMoreContent(true);
+    if (contentViewer.current.clientHeight > 100) {
+      setIsShowMoreContent(false);
     }
-  }, []);
+  }, [contentViewer.current]);
 
   return (
     <Wrapper>

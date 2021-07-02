@@ -231,7 +231,7 @@ function ExpertStep4Seller({ location }) {
 }
 
 // 영문, 한글, 숫자만 입력 가능 정규식
-const CHECK_KOR_ENG_NUM = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
+// const CHECK_KOR_ENG_NUM = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/;
 
 const ProfileThumb = styled.div.attrs(props => ({
   image: props.src,

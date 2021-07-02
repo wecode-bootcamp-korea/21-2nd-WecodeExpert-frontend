@@ -53,7 +53,7 @@ const LoginContainer = styled.div`
   text-align: center;
   align-items: center;
   background-color: white;
-  border: 1px solid #b5b5b5;
+  ${props => props.theme.borderBlue};
   z-index: 20;
 `;
 

@@ -5,6 +5,7 @@ function ExpertCard(props) {
   return (
     <ExpertContainer>
       {props.expertData.result?.map((expert, i) => {
+        console.log(expert.hastag);
         return (
           <ExpertCardItem key={i}>
             <ProfileWrap>
@@ -26,7 +27,7 @@ function ExpertCard(props) {
             </AverageRespond>
 
             <HashTag>
-              {expert.hashtag?.map((hashTagItem, i) => {
+              {expert.hashtag.map((hashTagItem, i) => {
                 return <span key={i}>#{hashTagItem}</span>;
               })}
             </HashTag>
@@ -109,7 +110,7 @@ const AverageRespond = styled.div`
 
 const HashTag = styled.div`
   display: flex;
-
+  padding-bottom: 15px;
   justify-content: center;
 
   font-size: 13px;
