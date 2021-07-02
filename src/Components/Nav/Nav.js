@@ -28,11 +28,7 @@ function Nav(props) {
   }, [location.pathname]);
 
   const categoryOn = () => {
-    setCategoryValid(true);
-  };
-
-  const categoryOff = () => {
-    setCategoryValid(false);
+    setCategoryValid(!categoryValid);
   };
 
   const loginModalon = () => {
@@ -75,7 +71,7 @@ function Nav(props) {
               <ItemLink>
                 <i className="far fa-comment-dots" />
               </ItemLink>
-              <ItemLink onMouseEnter={categoryOn} onMouseLeave={categoryOff}>
+              <ItemLink onClick={categoryOn}>
                 <i className="fas fa-list" />
                 {categoryValid && <NavCategory isCheck={categoryValid} />}
               </ItemLink>

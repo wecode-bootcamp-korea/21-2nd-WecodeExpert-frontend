@@ -10,7 +10,7 @@ function Category(props) {
   const [expertData, setExpertData] = useState([]);
   const [chooseCardFilter, setChooseCardFilter] = useState(0);
   const [selectedSort, setSelectedSort] = useState('-sell_count');
-  const [cardCount, setCardCount] = useState(4);
+  const [cardCount, setCardCount] = useState(12);
   const location = useLocation();
 
   const cardFilter =
@@ -60,8 +60,12 @@ function Category(props) {
 
   const fetchCard = () => {
     fetch(
-      `http://3.133.12.85:8000/${cardFilter}=${props.match.params.id}&sort=${selectedSort}&limit=${cardCount}`
-    );
+      `http://3.133.12.85:8000/${cardFilter}=${props.match.params.id}&sort=${selectedSort}&page_size=${cardCount}`
+    )
+      .then(res => res.json())
+      .then(data => {
+        chooseCardFilter === 0 ? setCategoryData(data) : setExpertData(data);
+      });
   };
 
   return (
@@ -89,6 +93,28 @@ function Category(props) {
         </FilterTap>
       </HeaderDiv>
       <FakeLine />
+      <Banner>
+        <FirstBanner>
+          <TextArea>
+            <span>묻지도 따지지도 않고 Rebase</span>
+            모든 커밋 50% 삭제
+          </TextArea>
+          <CouponWrap>
+            <CouponImg src="/image/coupon_blue.jpg" />
+            <CouponWordFirst>-50%</CouponWordFirst>
+          </CouponWrap>
+        </FirstBanner>
+        <SecondBanner>
+          <TextArea>
+            <span>위코드에 다시 돌아오면</span>
+            모든 상품 200% 가격 상승!
+          </TextArea>
+          <CouponWrap>
+            <CouponImg src="/image/coupon_purple.jpg" />
+            <CouponWordSecond>+200%</CouponWordSecond>
+          </CouponWrap>
+        </SecondBanner>
+      </Banner>
       <ListSection>
         <ListWrap>
           <ListNav>
@@ -158,6 +184,67 @@ const FakeLine = styled.div`
   width: 100%;
   margin-bottom: 50px;
   ${props => props.theme.borderBlue};
+`;
+
+const Banner = styled.div`
+  display: flex;
+
+  margin: 0 auto;
+  max-width: 1280px;
+  background-color: blue;
+`;
+
+const FirstBanner = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  background-color: #5e75d9;
+`;
+
+const TextArea = styled.p`
+  display: flex;
+  color: white;
+  margin-left: 20px;
+  padding: 30px 0;
+  flex-direction: column;
+  span {
+    font-weight: 600;
+  }
+`;
+
+const CouponWrap = styled.div`
+  position: relative;
+`;
+
+const CouponImg = styled.img`
+  width: 168px;
+  hegith: 90px;
+  shadow
+`;
+
+const CouponWordFirst = styled.p`
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  top: 30px;
+  left: 40px;
+`;
+
+const CouponWordSecond = styled.p`
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  left: 23px;
+  top: 30px;
+`;
+
+const SecondBanner = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  background-color: #514cab;
 `;
 
 const ListSection = styled.div`

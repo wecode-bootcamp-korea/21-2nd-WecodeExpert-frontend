@@ -50,9 +50,9 @@ function ExpertStep3Basic({ location }) {
     if (tags.length >= 5) {
       alert('태그는 5개까지 입력 가능합니다.');
       return;
-    } else if (CHECK_KOR_ENG_NUM.test(tags)) {
-      alert('태그는 한글,영문,숫자만 입력 가능합니다.');
-      return;
+      // } else if (CHECK_KOR_ENG_NUM.test(tags)) {
+      //   alert('태그는 한글,영문,숫자만 입력 가능합니다.');
+      //   return;
     }
 
     // 중복체크

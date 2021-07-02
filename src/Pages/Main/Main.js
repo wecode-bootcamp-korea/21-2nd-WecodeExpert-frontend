@@ -89,10 +89,7 @@ function Main() {
           </InformationDesc>
         </InformationSection>
         <InformationList>
-          <a
-            href="https://expert.naver.com/expert/introduction"
-            target="_blank"
-          >
+          <a href="https://expert.naver.com/expert/introduction" target="blank">
             <InformationItem imageUrl="https://ssl.pstatic.net/static/kin/section/expert/m/startExpert.svg">
               <strong>
                 엑스퍼트란

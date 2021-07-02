@@ -36,15 +36,15 @@ function NavCategory() {
 
 const DropdownContainer = styled.div`
   position: absolute;
-  display: flex;
-  left: -45px;
+  display: grid;
+  width: 100px;
+  left: -950px;
   top: 43px;
   align-items: center;
 `;
 
 const DropdownWrap = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   ${borderBlue}
   border-radius:10px;
@@ -56,7 +56,7 @@ const DropdownWrap = styled.div`
   :after,
   :before {
     bottom: 100%;
-    left: 50%;
+    right: 1%;
     border: solid transparent;
     content: '';
     height: 0;
@@ -67,13 +67,13 @@ const DropdownWrap = styled.div`
   :after {
     border-color: rgba(255, 255, 245, 0);
     border-bottom-color: #fffff5;
-    border-width: 20px;
+    border-width: 21px;
     margin-left: -20px;
   }
   :before {
     border-color: rgba(96, 220, 245, 0);
-    border-bottom-color: #ebeeff;
-    border-width: 22px;
+    border-bottom-color: #60dcf5;
+    border-width: 21px;
     margin-left: -22px;
   }
 `;

@@ -50,21 +50,25 @@ const FilterContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  z-index: 20;
 `;
 
 const ChosenFilterName = styled.div``;
 
 const FilterBox = styled.ul`
-  position: absolute;
-  top: 25px;
   display: flex;
+  position: absolute;
+
+  top: 25px;
   flex-direction: column;
+  background-color: white;
   list-style: none;
   ${props => props.theme.borderBlue}
   border-radius:20px;
 `;
 
 const FilterItems = styled.button`
+  width: 100px;
   padding: 10px 4px;
   border: none;
   background-color: unset;

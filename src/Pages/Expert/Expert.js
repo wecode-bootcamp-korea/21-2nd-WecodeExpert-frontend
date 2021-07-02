@@ -1,7 +1,6 @@
 import { React, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
-import Header from './Header/Header';
 import ExpertIntroduce from './ExpertIntroduce';
 import ExpertStep1Type from './ExpertStep1Type';
 import ExpertStep2Agree from './ExpertStep2Agree';
