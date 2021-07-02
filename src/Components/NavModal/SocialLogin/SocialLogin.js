@@ -33,8 +33,6 @@ function SocialLogin(props) {
 
   return (
     <LoginContainer>
-      <LoginIdInput placeholder="아이디를 입력하세요" />
-      <LoginPwInput placeholder="비밀번호를 입력하세요" />
       <LoginText>
         클릭 한 번으로
         <br /> 당신의 전문가에게
@@ -57,15 +55,6 @@ const LoginContainer = styled.div`
   background-color: white;
   border: 1px solid #b5b5b5;
   z-index: 20;
-`;
-
-const LoginIdInput = styled.input`
-  width: 50px;
-  height: 20px;
-`;
-const LoginPwInput = styled.input`
-  width: 50px;
-  height: 20px;
 `;
 
 const LoginText = styled.p`

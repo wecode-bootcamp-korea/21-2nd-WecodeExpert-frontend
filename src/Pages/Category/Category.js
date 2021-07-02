@@ -65,47 +65,54 @@ function Category(props) {
   };
 
   return (
-    <Container>
-      <Title>{CATEGORY[location.pathname.split('/')[2]]}</Title>
-      <FilterTap>
-        {TOP_FILTER_LIST.map((items, i) => {
-          return (
-            <FilterItems
-              key={i}
-              value={i}
-              onClick={makeBorderBottom}
-              style={{
-                borderBottom: `${
-                  chooseCardFilter === i ? '2px solid #4b65f6' : ''
-                }`,
-                color: `${chooseCardFilter === i ? '#4b65f6' : '#252525'}`,
-              }}
-            >
-              {items}
-            </FilterItems>
-          );
-        })}
-      </FilterTap>
+    <>
+      <HeaderDiv>
+        <Title>{CATEGORY[location.pathname.split('/')[2]]}</Title>
+        <FilterTap>
+          {TOP_FILTER_LIST.map((items, i) => {
+            return (
+              <FilterItems
+                key={i}
+                value={i}
+                onClick={makeBorderBottom}
+                style={{
+                  borderBottom: `${
+                    chooseCardFilter === i ? '2px solid #4b65f6' : ''
+                  }`,
+                  color: `${chooseCardFilter === i ? '#4b65f6' : '#252525'}`,
+                }}
+              >
+                {items}
+              </FilterItems>
+            );
+          })}
+        </FilterTap>
+      </HeaderDiv>
+      <FakeLine />
       <ListSection>
-        <ListNav>
-          <ListCount>
-            전체{' '}
-            {chooseCardFilter === 0 ? categoryData.count : expertData.count}
-          </ListCount>
-          {chooseCardFilter === 0 && (
-            <FilterDropdown setSelectedSort={setSelectedSort} />
+        <ListWrap>
+          <ListNav>
+            <ListCount>
+              전체{' '}
+              {chooseCardFilter === 0 ? categoryData.count : expertData.count}
+            </ListCount>
+            {chooseCardFilter === 0 && (
+              <FilterDropdown setSelectedSort={setSelectedSort} />
+            )}
+          </ListNav>
+          {chooseCardFilter === 0 ? (
+            <CategoryCard categoryData={categoryData} />
+          ) : (
+            <ExpertCard expertData={expertData} />
           )}
-        </ListNav>
-        {chooseCardFilter === 0 ? (
-          <CategoryCard categoryData={categoryData} />
-        ) : (
-          <ExpertCard expertData={expertData} />
-        )}
+        </ListWrap>
+        <ButtonDiv>
+          <FetchMoreCard onClick={plusCount}>
+            <span>상담 상품</span> 더보기
+          </FetchMoreCard>
+        </ButtonDiv>
       </ListSection>
-      <FetchMoreCard onClick={plusCount}>
-        <span>상담 상품</span> 더보기
-      </FetchMoreCard>
-    </Container>
+    </>
   );
 }
 const CATEGORY = {
@@ -122,7 +129,7 @@ const CATEGORY = {
 
 const TOP_FILTER_LIST = ['상담', '엑스퍼트'];
 
-const Container = styled.div`
+const HeaderDiv = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 7px 20px 0;
@@ -137,27 +144,44 @@ const Title = styled.div`
 `;
 
 const FilterTap = styled.ul`
-  width: 100%;
-  margin: 30px 0;
+  max-width: 1280px;
+  margin-top: 30px;
   display: flex;
 `;
 
 const FilterItems = styled.li`
-  margin-left: 15px;
+  margin-right: 15px;
+  font-weight: 800;
+`;
+
+const FakeLine = styled.div`
+  width: 100%;
+  margin-bottom: 50px;
+  ${props => props.theme.borderBlue};
 `;
 
 const ListSection = styled.div`
-  backgroundcolor: #f9faff;
+  background-color: #f9faff;
+`;
+
+const ListWrap = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
 `;
 
 const ListNav = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 15px;
-  margin-bottom: 10px;
+  margin: 10px 0;
+  padding-top: 10px;
 `;
 
 const ListCount = styled.div``;
+
+const ButtonDiv = styled.div`
+  padding-bottom: 20px;
+`;
 
 const FetchMoreCard = styled.button`
   display: block;

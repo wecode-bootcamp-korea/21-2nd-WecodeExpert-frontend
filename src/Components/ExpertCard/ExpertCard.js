@@ -45,6 +45,7 @@ const ExpertContainer = styled.div`
 const ExpertCardItem = styled.div`
   justify-content: center;
   text-align: center;
+  background-color: white;
   flex-direction: column;
   border: solid 1px rgba(111, 138, 255, 0.15);
   margin-bottom: 40px;
