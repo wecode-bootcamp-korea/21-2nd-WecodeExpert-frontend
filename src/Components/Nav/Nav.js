@@ -16,7 +16,7 @@ const ALLOWED_PATH = [
 ];
 
 function Nav(props) {
-  const [categoryValid, setCategoryValid] = useState(false);
+  const [categoryValid, setCategoryValid] = useState(true);
   const [accountModalValid, setAccountModalValid] = useState(false);
   const [profileValid, setProfileValid] = useState(false);
   const [showNav, setShowNav] = useState(true);
@@ -32,7 +32,7 @@ function Nav(props) {
   };
 
   const categoryOff = () => {
-    setCategoryValid(false);
+    setCategoryValid(true);
   };
 
   const loginModalon = () => {
